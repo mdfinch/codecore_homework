@@ -16,6 +16,14 @@ function boxIt(array){
             space = arr[x].length
         }
     }
+    
+    let box = drawTopBorder(space)
+        for(let x = 0; x < arr.length; x++) {
+            x < arr.length-1 ? box += drawBarsAround(arr[x] + " ".repeat(space-arr[x].length)) +  drawMiddleBorder(space) : box += drawBarsAround(arr[x] + " ".repeat(space-arr[x].length))
+        }    
+    box += drawBottomBorder(space)
+
+    return box
 }
 
 console.log(boxIt([process.argv[2],process.argv[3],process.argv[4]]))
