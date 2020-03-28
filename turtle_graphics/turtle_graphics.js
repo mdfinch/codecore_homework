@@ -129,7 +129,7 @@ class Turtle {
         
     console.log('-- END LOG --');
     }
-};
+}
 
 const flash = new Turtle(0, 4);
 flash.forward(3).left().forward(3).right().forward(5).right().forward(8).right().forward(5).right().forward(3).left().forward(3);
