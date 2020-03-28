@@ -72,5 +72,8 @@ class Turtle {
         }
         return this;
     }
-    
+    allPoints() {
+        // returns the array of coordinates
+        return this.array;
+    }
 };
