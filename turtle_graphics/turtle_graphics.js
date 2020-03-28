@@ -116,7 +116,7 @@ class Turtle {
     
     console.log('-- BEGIN LOG --');
     // for loop starting from the largest (maxY) coordinate, + 1 to make it look like the lab instructions (empty row at start)
-    for (let y = this.maxY + 1; y > this.minY; y--) {
+    for (let y = this.maxY + 1; y >= this.minY; y--) {
         let row = '';
         // for loop staring from the smallest (minX) coordinate
         // the current row (y) and each space in that row (x) are sent through the callback
