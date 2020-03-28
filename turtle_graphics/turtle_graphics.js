@@ -6,5 +6,34 @@ class Turtle {
         this.array = []; // stores coordinates
 
     }
-    
-}
+        forward(vector) {
+        // updates either x or y coordinate depending on the direction
+    switch (this.direction) {
+        case "North":
+            for(let i = 0; i <= vector; i++) {
+                this.array.push([this.x, this.y - i])
+            }
+            this.y -= vector
+            break;
+        case "East":
+            for(let i = 0; i <= vector; i++) {
+                this.array.push([this.x + i, this.y])
+            }
+            this.x += vector
+            break;
+        case "South":
+            for(let i = 0; i <= vector; i++) {
+                this.array.push([this.x, this.y + i])
+            }
+            this.y += vector
+            break;
+        case "West":
+            for(let i = 0; i <= vector; i++) {
+                this.array.push([this.x - i, this.y])
+            }
+            this.x -= vector
+            break;
+        }
+        return this;
+    }
+};
