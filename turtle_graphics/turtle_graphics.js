@@ -36,4 +36,41 @@ class Turtle {
         }
         return this;
     }
+    right() {
+        // updates the direction right for the forward function to use
+        switch (this.direction) {
+            case "North":
+                this.direction = "East";
+                break;
+            case "East":
+                this.direction = "South";
+                break;
+            case "South":
+                this.direction = "West";
+                break;
+            case "West":
+                this.direction = "North";
+                break;
+        }
+        return this;
+    }
+    left() {
+        // updates the direction left for the forward function to use
+    switch (this.direction) {
+        case "North":
+            this.direction = "West";
+            break;
+        case "West":
+            this.direction = "South";
+            break;
+        case "South":
+            this.direction = "East";
+            break;
+        case "East":
+            this.direction = "North";
+            break;
+        }
+        return this;
+    }
+    
 };
