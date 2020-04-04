@@ -29,6 +29,15 @@ const todo = function () {
                 todo();
                 break;
 
+            case 'n':
+                rl.question("What would you like to add to the todo list?\n> ", task => {
+                    list.push(`[] ${task}\n`)
+                    todo();
+                })
+
+                break;
+
+
             default:
                 console.log("Please choose a valid command!")
                 todo();
