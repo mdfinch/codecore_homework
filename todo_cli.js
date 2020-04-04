@@ -14,3 +14,26 @@ let menu = `\n(v) View ${b} (n) New ${b} (cX) Complete ${b} (dX) Delete ${b} (q)
 console.log("Welcome to Todo CLI!\n" + "----------")
 
 let list = [];
+
+const todo = function () {
+    rl.question(menu, answer => {
+        switch (answer.substr(0, 1)) {
+            case 'v':
+                if (list.length === 0) {
+                    console.log("The list is empty!")
+                } else {
+                    for (let x = 0; x < list.length; x++) {
+                        console.log(x + ' ' + list[x])
+                    }
+                }
+                todo();
+                break;
+
+            default:
+                console.log("Please choose a valid command!")
+                todo();
+        }
+    })
+};
+
+todo();
