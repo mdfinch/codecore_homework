@@ -37,6 +37,12 @@ const todo = function () {
 
                 break;
 
+            case `c`:
+                list[answer.substr(1)] === undefined ? console.log("That task doesn't exit") : list[answer.substr(1)] = (list[answer.substr(1)]).replace('[]', '[\u2713]');
+                todo();
+                break;
+
+
 
             default:
                 console.log("Please choose a valid command!")
