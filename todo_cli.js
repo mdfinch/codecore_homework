@@ -42,7 +42,15 @@ const todo = function () {
                 todo();
                 break;
 
-
+            case 'd':
+                list.splice(answer.substr(1), 1)
+                todo();
+                break;
+                num
+            case 'q':
+                console.log("Goodbye!")
+                rl.close()
+                break;
 
             default:
                 console.log("Please choose a valid command!")
