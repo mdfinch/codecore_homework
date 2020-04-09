@@ -26,4 +26,4 @@ function boxIt(array){
     return box
 }
 
-console.log(boxIt([process.argv[2],process.argv[3],process.argv[4]]));
+console.log(boxIt(process.argv.slice(2)));
