@@ -5,7 +5,7 @@ exports.up = function (knex, Promise) {
         table.string('logoUrl')
         table.string('name');
         table.text('members');
-    })
+    });
 };
 
 exports.down = function (knex, Promise) {
