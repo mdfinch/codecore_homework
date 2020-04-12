@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+<div class="container">
+    <h1>Cohorts</h1>
+
+    <div class="post-card">
+        <% for(let cohort of cohorts) { %> 
+            <div class="card mb-4">
+                <div class="card body">
+                    <a href="/cohorts/<%= cohort.id %>">
+                        <h5 class="card-title"><%= cohort.name %> </h5>
+                    </a>
+                    <p class="card-text"><%= cohort.members %> </p>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

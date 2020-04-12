@@ -7,35 +7,42 @@ router.get("/new", (reqest, response) => {
     response.render("cohorts/new");
 });
 
-router.post("/", (request, respones) => {
-    const {logoUrl, name, members} = request.body;
+router.post("/", (request, response) => {
+    const { logoUrl, name, members } = request.body;
     knex("cohorts")
-    .insert({
-        logoUrl,
-        name,
-        members
-    })
-    .returning("*")
-    .then((cohort) => {
-        // response.redirect(`/cohorts/${cohort[0].id}`)
-        respones.redirect("cohorts/new")
-    });
+        .insert({
+            logoUrl,
+            name,
+            members
+        })
+        .returning("*")
+        .then((cohort) => {
+            response.redirect(`/cohorts/${cohort[0].id}`)
+        });
 });
 
 router.get("/:id", (request, response) => {
 
     const id = request.params.id;
     knex("cohorts")
-      .where("id", id)
-      .first()
-      .then((note) => {
-        console.log(note);
-        if (note) {
-          response.render("cohorts/show", { note });
-        } else {
-          response.redirect("/cohorts");
-        }
-      });
-  });
+        .where("id", id)
+        .first()
+        .then((cohort) => {
+            console.log(cohort);
+            if (cohort) {
+                response.render("cohorts/show", { cohort });
+            } else {
+                response.redirect("/cohorts");
+            }
+        });
+});
+
+router.get("/", (request, response) => {
+    knex("cohorts")
+        .orderBy("id", "desc")
+        .then((cohorts) => {
+            response.render("cohorts/index", { cohorts });
+        });
+});
 
 module.exports = router;
