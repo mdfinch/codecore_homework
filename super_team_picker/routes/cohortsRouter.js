@@ -15,8 +15,10 @@ router.post("/", (request, respones) => {
         name,
         members
     })
-    .returning("*")
-    .then((cohort) => {
-        response.redirect(`/cohorts/${cohort[0].id}`)
-    });
+    // .returning("*")
+    // .then((cohort) => {
+    //     response.redirect(`/cohorts/${cohort[0].id}`)
+    // });
 });
+
+module.exports = router;
