@@ -20,11 +20,11 @@ app.use(cookieParser());
 
 app.use((request, response, next) => {
     const username = request.cookies.username;
-  
+
     response.locals.loggedInUserName = username || "";
 
     next();
-  });
+});
 
 app.use(
     methodOverride((request, response) => {
@@ -44,7 +44,7 @@ app.use("/cohorts", cohortsRouter);
 
 
 const PORT = 3000;
-const ADDRESS = "localhost"; 
+const ADDRESS = "localhost";
 app.listen(PORT, ADDRESS, () => {
     console.log(`Server listening on http://${ADDRESS}:${PORT}`);
 });
