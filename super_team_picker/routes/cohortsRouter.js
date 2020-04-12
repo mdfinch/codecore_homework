@@ -48,11 +48,37 @@ router.get("/", (request, response) => {
 
 router.get("/:id/edit", (request, response) => {
     knex("cohorts")
-    .where("id", request.params.id)
-    .first()
-    .then((cohort) => {
-        response.render("cohorts/edit", {cohort});
-    });
+        .where("id", request.params.id)
+        .first()
+        .then((cohort) => {
+            response.render("cohorts/edit", { cohort });
+        });
+});
+
+router.patch("/:id", (request, response) => {
+    const { logoUrl, name, members } = request.body;
+    const updatedCohort = {
+        logoUrl,
+        name,
+        members,
+    };
+
+    knex("cohorts")
+        .where("id", request.params.id)
+        .update(updatedCohort)
+        .then(() => {
+            response.redirect(`/cohorts/${request.params.id}`);
+        });
+});
+
+router.delete("/:id", (request, response) => {
+
+    knex("cohorts")
+        .where("id", request.params.id)
+        .del()
+        .then(() => {
+            response.redirect("/cohorts");
+        });
 });
 
 module.exports = router;
