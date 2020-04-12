@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="container-fluid">
+<h1 class="text-center">Edit Cohort</h1>
+<br>
+   <form action="/cohorts" method="POST">
+        <div class="form-group">
+            <label for="logoUrl">Logo Url</label>
+           <input type="url" name="logoUrl" class="form-control" value="<%= cohort.logoUrl %> "> 
+        </div>
+        <div class="form-group">
+            <label for="name">Cohort Name</label>
+           <input type="text" name="name" class="form-control" value="<%= cohort.name %> "> 
+        </div>
+        <div class="form-group">
+            <label for="members">Cohort Members</label>
+           <input type="text" name="members" class="form-control" value="<%= cohort.members %> "> 
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </div>
+    </form> 
+</div>
+
+
+<%- include('../partials/footer.ejs') %>

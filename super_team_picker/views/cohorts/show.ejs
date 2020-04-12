@@ -2,10 +2,15 @@
 <div class="container-fluid">
     <h1>Cohort</h1>
     <div class="card body">
-        <h5 class="card-title"><%= cohort.name %> </h5>
+        <h5 class="card-title"> <%= cohort.logoUrl %> <%= cohort.name %> </h5>
         <p class="card-text">
             <div><%= cohort.members %> </div>
         </p>
+        <div class="d-flex">
+            <a href="/cohorts/<%= cohort.id %>/edit" class="btn btn-outline-success mr-2">
+                Edit
+            </a>
+        </div>
     </div>
 
 </div>

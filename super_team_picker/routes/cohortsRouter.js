@@ -45,4 +45,14 @@ router.get("/", (request, response) => {
         });
 });
 
+
+router.get("/:id/edit", (request, response) => {
+    knex("cohorts")
+    .where("id", request.params.id)
+    .first()
+    .then((cohort) => {
+        response.render("cohorts/edit", {cohort});
+    });
+});
+
 module.exports = router;

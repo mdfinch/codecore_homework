@@ -6,6 +6,7 @@
         <% for(let cohort of cohorts) { %> 
             <div class="card mb-4">
                 <div class="card body">
+                    <p><%= cohort.logoUrl %> </p>
                     <a href="/cohorts/<%= cohort.id %>">
                         <h5 class="card-title"><%= cohort.name %> </h5>
                     </a>
