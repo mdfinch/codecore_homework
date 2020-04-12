@@ -15,10 +15,27 @@ router.post("/", (request, respones) => {
         name,
         members
     })
-    // .returning("*")
-    // .then((cohort) => {
-    //     response.redirect(`/cohorts/${cohort[0].id}`)
-    // });
+    .returning("*")
+    .then((cohort) => {
+        // response.redirect(`/cohorts/${cohort[0].id}`)
+        respones.redirect("cohorts/new")
+    });
 });
+
+router.get("/:id", (request, response) => {
+
+    const id = request.params.id;
+    knex("cohorts")
+      .where("id", id)
+      .first()
+      .then((note) => {
+        console.log(note);
+        if (note) {
+          response.render("cohorts/show", { note });
+        } else {
+          response.redirect("/cohorts");
+        }
+      });
+  });
 
 module.exports = router;

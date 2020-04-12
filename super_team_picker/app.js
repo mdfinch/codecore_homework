@@ -40,7 +40,7 @@ const baseRouter = require("./routes/baseRouter");
 app.use("/", baseRouter);
 
 const cohortsRouter = require("./routes/cohortsRouter");
-app.use("/", cohortsRouter);
+app.use("/cohorts", cohortsRouter);
 
 
 const PORT = 3000;
