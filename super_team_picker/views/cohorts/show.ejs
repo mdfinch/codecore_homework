@@ -1,15 +1,16 @@
 <%- include('../partials/header.ejs') %>
 <div class="container-fluid">
-    <h1>Cohort</h1>
     <div class="card body">
-        <h5 class="card-title"> <%= cohort.logoUrl %> <%= cohort.name %> </h5>
-        <p class="card-text">
-            <div><%= cohort.members %> </div>
-        </p>
-        <div class="d-flex">
-            <a href="/cohorts/<%= cohort.id %>/edit" class="btn btn-outline-success mr-2">
-                Edit
-            </a>
+        <div>
+            <img src="<%= cohort.logoUrl %>" class="rounded float-left" alt="half life logo" width="10%"
+                style="margin: 2%;">
+            <p class="card-title" style="font-size: 4rem;"><%= cohort.name %> </p>
+        </div>
+        <div class="card-text">
+            <p style="margin: 1rem; font-size: 2rem;"><%= cohort.members %> </p>
+        </div>
+        <div class="d-flex" style="margin: 1rem;">
+            <a href="/cohorts/<%= cohort.id %>/edit" class="btn btn-outline-success mr-2">Edit</a>
             <form method="POST" action="/cohorts/<%= cohort.id %>">
                 <input type="hidden" name="_method" value="DELETE" />
                 <input type="submit" class="btn btn-outline-danger" value="Delete" />
@@ -17,6 +18,30 @@
         </div>
     </div>
 </div>
-
+<br>
+<div class="container-fluid">
+    <h3>Method</h3>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="teamSplit" id="teamSplit1" value="option1" checked>
+        <label class="form-check-label" for="teamSplit1">
+            Team Count
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="teamSplit" id="teamSplit2" value="option2">
+        <label class="form-check-label" for="teamSplit2">
+            Number Per Team
+        </label>
+    </div>
+    <br>
+    <form action="/cohorts" method="GET">
+        <div class="form-group">
+            <h3>Quantity</h3>
+            <label for=""></label>
+            <input type="number" name="" id="">
+        </div>
+    </form>
+    <button type="button" class="btn btn-outline-primary btn-block">Assign Teams</button>
+</div>
 
 <%- include('../partials/footer.ejs') %>
