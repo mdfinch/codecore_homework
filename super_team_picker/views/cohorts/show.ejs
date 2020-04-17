@@ -45,6 +45,7 @@
 
 
     <% if(obj) { %>
+    <% Object.keys(obj).forEach((key, index) => { %>
     <table class="table">
         <thead>
             <tr>
@@ -53,7 +54,6 @@
             </tr>
         </thead>
         <tbody>
-            <% Object.keys(obj).forEach((key, index) => { %>
             <tr>
                 <th scope="row"><%= index + 1 %></th>
                 <% let teamArray = obj[key] %> 
