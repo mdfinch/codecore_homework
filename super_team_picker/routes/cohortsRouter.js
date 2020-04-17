@@ -45,13 +45,13 @@ router.get("/:id", (request, response) => {
                     array[j] = temp
                 }
                 let obj = {};
-                // creates correct amount of team keys with empty array values
+                // creates correct amount of team keys with empty array values for teamCount option
                 if (option == 'teamCount') {
                     for (let x = 0; x < num; x++) {
                         obj[`Team_${x + 1}`] = [];
                     }
                 }
-
+                // creates correct amount of team keys with empty array values for numPerTeam option
                 if (option == 'numPerTeam') {
                     num = Math.round(array.length / num)
                     for (let x = 0; x < num; x++) {
