@@ -5,7 +5,6 @@
             <img src="<%= cohort.logoUrl %>" class="rounded float-left" alt="half life logo" width="10%"
                 style="margin: 2%;">
             <p class="card-title" style="font-size: 4rem;"><%= cohort.name %> </p>
-            <%= console.log(cohort.name) %> 
         </div>
         <div class="card-text">
             <p style="margin: 1rem; font-size: 2rem;"><%= cohort.members %> </p>
@@ -21,16 +20,16 @@
 </div>
 <br>
 <div class="container-fluid">
-    <form action="show">
+    <form action="/cohorts/<%= cohort.id %>">
         <h3>Method</h3>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="teamSplit" id="teamSplit1" value="option1" checked>
+            <input class="form-check-input" type="radio" name="teamSplit" id="teamSplit1" value="teamCount" checked>
             <label class="form-check-label" for="teamSplit1">
                 Team Count
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="teamSplit" id="teamSplit2" value="option2">
+            <input class="form-check-input" type="radio" name="teamSplit" id="teamSplit2" value="numPerTeam">
             <label class="form-check-label" for="teamSplit2">
                 Number Per Team
             </label>
@@ -41,9 +40,27 @@
             <label for="quantity"></label>
             <input type="number" name="quantity" id="quantity">
         </div>
-        <button type="button" class="btn btn-outline-primary btn-block">Assign Teams</button>
+        <input type="submit" class="btn btn-outline-primary btn-block" value="Assign Teams" />
     </form>
 
 
+    <% if(obj) { %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Members</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Object.keys(obj).forEach((key, index) => { %>
+            <tr>
+                <th scope="row"><%= key %></th>
+                <td><%= obj[key] %> </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } %>
 
-<%- include('../partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>

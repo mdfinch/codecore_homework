@@ -28,9 +28,47 @@ router.get("/:id", (request, response) => {
         .where("id", id)
         .first()
         .then((cohort) => {
-            console.log(cohort);
             if (cohort) {
-                response.render("cohorts/show", { cohort });
+                let option = request.query.teamSplit;
+                let num = request.query.quantity;
+                let arr = cohort.members.split(',');
+                let array = [];
+                //splits list of names into a trimed array
+                for (let element of arr) {
+                    array.push(element.trim())
+                }
+                // randomizes array
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * i)
+                    const temp = array[i]
+                    array[i] = array[j]
+                    array[j] = temp
+                }
+                let obj = {};
+                // creates correct amount of team keys with empty array values
+                if (option == 'teamCount') {
+                    for (let x = 0; x < num; x++) {
+                        obj[`Team_${x + 1}`] = [];
+                    }
+                }
+
+                if (option == 'numPerTeam') {
+                    num = Math.round(array.length / num)
+                    for (let x = 0; x < num; x++) {
+                        obj[`Team_${x + 1}`] = [];
+                    }
+                }
+                // pushes the correct amount people onto each team
+                teams = num
+                for (let a = 0; a < num; a++) {
+                    let number = (array.length / teams)
+
+                    for (let counter = 0; counter < number; counter++) {
+                        obj[`Team_${a + 1}`].push(array.shift())
+                    }
+                    teams--
+                }
+                response.render("cohorts/show", { cohort, obj });
             } else {
                 response.redirect("/cohorts");
             }
